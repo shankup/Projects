@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/solar/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <title>Sign Up Page</title>
+</head>
+<body>
+    <h3 class="text-center"><b>My Tasks</b></h3>
+            {% csrf_token %}
+            {% for s in show %}
+            <div class="container bg-white shadow-md p-5 form-layout" style="margin-top: 10px;">
+                {{ s.title }}
+                <br> <br>
+                {{ s.content }}
+                <br> <br>
+                <a href="{% url 'update_task' s.id %}">Update Task</a>
+                <br> <br>
+                <a href="{% url 'delete_task' s.id %}">Delete Task</a>
+            </div>
+            {% endfor %}
+</body>
+</html>
